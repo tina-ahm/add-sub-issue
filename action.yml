@@ -1,0 +1,23 @@
+name: Add sub-issues
+description: Action to add sub-issues
+author: tina-ahm
+branding:
+  icon: heart
+  color: red
+inputs:
+  myToken:
+    description: "GitHub Token"
+    required: true
+  issue_number:
+    description: "Issue number to add the sub-issues to"
+    required: true
+  assignee:
+    description: "Username of the assignee"
+    required: true
+  templates:
+    description: "A JSON array of the file-path(s) for the template(s)."
+    required: true
+
+runs:
+  using: node20
+  main: dist/index.js
