@@ -36,7 +36,8 @@ export async function run(): Promise<void> {
 
       const data = response.data;
       if (!Array.isArray(data) && data.type === "file") {
-        body = atob(data.content);
+        const bufferArray = Buffer.from(data.content, "base64");
+        body = bufferArray.toString("utf8");
       }
     } catch (error) {
       core.error(`Error encountered retrieving issue template: ${error}`);

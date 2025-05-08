@@ -35611,7 +35611,8 @@ async function run() {
       );
       const data = response.data;
       if (!Array.isArray(data) && data.type === "file") {
-        body = atob(data.content);
+        const bufferArray = Buffer.from(data.content, "base64");
+        body = bufferArray.toString("utf8");
       }
     } catch (error) {
       coreExports.error(
